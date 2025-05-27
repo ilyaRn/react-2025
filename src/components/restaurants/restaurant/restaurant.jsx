@@ -1,6 +1,6 @@
 import {React} from "react";
 import PropTypes from "prop-types";
-import { ProductCounter } from "./product-counter";
+import { Counter } from "../../counter/counter.jsx";
 
 const css = {
     td: {
@@ -13,7 +13,7 @@ export const Restaurant = ({restaurant}) => {
         <tr key={id}>
             <td style={css.td}>{name}</td>
             <td style={css.td}>{price}</td>            
-            <td style={css.td}><ProductCounter /></td>
+            <td style={css.td}><Counter /></td>
         </tr>
     );
     const reviewsListItems = restaurant.reviews.map(({id, user, text, rating}) =>
