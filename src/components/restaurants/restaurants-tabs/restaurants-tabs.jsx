@@ -11,12 +11,12 @@ const css = {
     }
 };
 
-export const RestaurantsTabs = ({restaurants, activeTab, onChangeTab}) => {
-    const tabs = restaurants.map(({id, name}, i) =>
+export const RestaurantsTabs = ({restaurants, activeRestaurant, onChangeRestaurant}) => {
+    const tabs = restaurants.map(({id, name}) =>
         <button key={id}
             style={css.buttonTab}
-            disabled={i === activeTab}
-            onClick={() => onChangeTab(i)}>
+            disabled={id === activeRestaurant}
+            onClick={() => onChangeRestaurant(id)}>
             {name}
         </button>
     );
@@ -29,6 +29,6 @@ export const RestaurantsTabs = ({restaurants, activeTab, onChangeTab}) => {
 
 RestaurantsTabs.propTypes = {
     restaurants: PropTypes.array.isRequired,
-    activeTab: PropTypes.number.isRequired,
-    onChangeTab: PropTypes.func.isRequired,
+    activeRestaurant: PropTypes.number.isRequired,
+    onChangeRestaurant: PropTypes.func.isRequired,
 };
