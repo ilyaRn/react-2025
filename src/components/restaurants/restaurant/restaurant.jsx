@@ -1,5 +1,5 @@
-import {React} from "react";
-import PropTypes from "prop-types";
+import { React } from "react";
+import { ReviewForm } from "../review-form/review-form.jsx";
 import { Counter } from "../../counter/counter.jsx";
 
 const css = {
@@ -8,12 +8,15 @@ const css = {
     },
 };
 
-export const Restaurant = ({restaurant}) => {    
+export const Restaurant = ({restaurant}) => {
+    if (!restaurant) {
+        return null;
+    }
     const menuTableRows = restaurant.menu.map(({ id, name, price }) =>        
         <tr key={id}>
             <td style={css.td}>{name}</td>
             <td style={css.td}>{price}</td>            
-            <td style={css.td}><Counter /></td>
+            <td style={css.td}><Counter min={0} max={5}/></td>
         </tr>
     );
     const reviewsListItems = restaurant.reviews.map(({id, user, text, rating}) =>
@@ -34,10 +37,7 @@ export const Restaurant = ({restaurant}) => {
             <ul>                
                 {reviewsListItems}
             </ul>
+            <ReviewForm />
         </div>
     );
-};
-
-Restaurant.propTypes = {
-    restaurant: PropTypes.object.isRequired,
 };
