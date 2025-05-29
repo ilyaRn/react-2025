@@ -1,23 +1,15 @@
 import { React } from "react";
 import { ReviewForm } from "../review-form/review-form.jsx";
-import { Counter } from "../../counter/counter.jsx";
-
-const css = {
-    td: {
-        "padding": "1rem",
-    },
-};
+import { DishTableRow } from "./dish-table-row/dish-table-row.jsx";
 
 export const Restaurant = ({restaurant}) => {
     if (!restaurant) {
         return null;
-    }
-    const menuTableRows = restaurant.menu.map(({ id, name, price }) =>        
-        <tr key={id}>
-            <td style={css.td}>{name}</td>
-            <td style={css.td}>{price}</td>            
-            <td style={css.td}><Counter min={0} max={5}/></td>
-        </tr>
+    }    
+    const menuTableRows = restaurant.menu.map(({ id, name, price }) =>
+        <DishTableRow key={id}
+            name={name}
+            price={price} />
     );
     const reviewsListItems = restaurant.reviews.map(({id, user, text, rating}) =>
 		<li key={id}>

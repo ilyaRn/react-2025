@@ -3,11 +3,12 @@
     const DEFAULT_FORM_VALUE = {
         name: "",
         text: "",
-        clearCounter: 0,
+        rating: 1,
     };
 
     const SET_NAME_ACTION = "SET_NAME";
     const SET_TEXT_ACTION = "SET_TEXT";
+    const SET_RATING_ACTION = "SET_RATING";
     const CLEAR_ACTION = "CLEAR_ACTION";
 
     const reducer = (state, { type, payload }) => {
@@ -16,6 +17,10 @@
             return { ...DEFAULT_FORM_VALUE, name: payload };
         case SET_TEXT_ACTION:
             return { ...state, text: payload };
+        case SET_RATING_ACTION:
+            return (1 <= payload && payload <= 5)
+                ? { ...state, rating: payload } 
+                : state;
         case CLEAR_ACTION:
             return { ...DEFAULT_FORM_VALUE, clearCounter: state.clearCounter + 1 };
         default:
@@ -34,6 +39,10 @@
         dispatch({ type: SET_TEXT_ACTION, payload: text });
     };
 
+    const setRating = (rating) => {
+        dispatch({ type: SET_RATING_ACTION, payload: rating});
+    };
+    
     const clear = () => {
         dispatch({ type: CLEAR_ACTION });
     };
@@ -42,6 +51,7 @@
         form,
         setName,
         setText,
+        setRating,
         clear,
     };
 };
