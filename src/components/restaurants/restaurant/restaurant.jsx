@@ -1,20 +1,15 @@
-import {React} from "react";
-import PropTypes from "prop-types";
-import { Counter } from "../../counter/counter.jsx";
+import { React } from "react";
+import { ReviewForm } from "../review-form/review-form.jsx";
+import { DishTableRow } from "./dish-table-row/dish-table-row.jsx";
 
-const css = {
-    td: {
-        "padding": "1rem",
-    },
-};
-
-export const Restaurant = ({restaurant}) => {    
-    const menuTableRows = restaurant.menu.map(({ id, name, price }) =>        
-        <tr key={id}>
-            <td style={css.td}>{name}</td>
-            <td style={css.td}>{price}</td>            
-            <td style={css.td}><Counter /></td>
-        </tr>
+export const Restaurant = ({restaurant}) => {
+    if (!restaurant) {
+        return null;
+    }    
+    const menuTableRows = restaurant.menu.map(({ id, name, price }) =>
+        <DishTableRow key={id}
+            name={name}
+            price={price} />
     );
     const reviewsListItems = restaurant.reviews.map(({id, user, text, rating}) =>
 		<li key={id}>
@@ -34,10 +29,7 @@ export const Restaurant = ({restaurant}) => {
             <ul>                
                 {reviewsListItems}
             </ul>
+            <ReviewForm />
         </div>
     );
-};
-
-Restaurant.propTypes = {
-    restaurant: PropTypes.object.isRequired,
 };

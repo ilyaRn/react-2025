@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import { React } from "react";
 
 const css = {
     value: {
@@ -6,14 +6,16 @@ const css = {
     },
 };
 
-export const Counter = () => {
-    const [value, setValue] = useState(0);    
-    
+export const Counter = ({min, max, value, onIncrease, onDecrease}) => {
     return (
         <div>
-            <button onClick={() => setValue(value - 1)}>-</button>
+            <button 
+                disabled={!Number.isInteger(min) || value <= min}
+                onClick={onDecrease}>-</button>
             <span style={css.value}>{value}</span>
-            <button onClick={() => setValue(value + 1)}>+</button>        
+            <button 
+                disabled={!Number.isInteger(max) || value >= max}
+                onClick={onIncrease}>+</button>        
         </div>
     );
 };

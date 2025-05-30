@@ -1,5 +1,4 @@
 import {React} from "react";
-import PropTypes from "prop-types";
 
 const css = {
     root: {
@@ -25,10 +24,4 @@ export const RestaurantsTabs = ({restaurants, activeRestaurant, onChangeRestaura
             {tabs}
         </div>
     );
-};
-
-RestaurantsTabs.propTypes = {
-    restaurants: PropTypes.array.isRequired,
-    activeRestaurant: PropTypes.number.isRequired,
-    onChangeRestaurant: PropTypes.func.isRequired,
 };
