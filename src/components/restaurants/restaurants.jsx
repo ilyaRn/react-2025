@@ -15,9 +15,12 @@ export const Restaurants = () => {
                 activeRestaurant={activeRestaurantId}
                 onChangeRestaurant={setActiveRestaurantId}
             />
-            <Restaurant
-                restaurant={restaurant}
-            />        
+            {Array.from({length:7}, (_, index) => 
+                <Restaurant
+                    key={index}
+                    restaurant={restaurant}
+                />
+            )}        
         </div>
     );
 };

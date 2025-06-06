@@ -1,6 +1,7 @@
 import { React } from "react";
 import { ReviewForm } from "../review-form/review-form.jsx";
 import { DishTableRow } from "./dish-table-row/dish-table-row.jsx";
+import style from "./restaurant.module.css";
 
 export const Restaurant = ({restaurant}) => {
     if (!restaurant) {
@@ -18,7 +19,7 @@ export const Restaurant = ({restaurant}) => {
 	);
 
     return (
-        <div>
+        <div className={style.restaurant}>
             <h3>Меню</h3>
             <table>
                 <tbody>

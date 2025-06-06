@@ -1,18 +1,13 @@
 import { React } from "react";
-
-const css = {
-    value: {
-        padding: "0 1rem",
-    },
-};
+import style from "./counter.module.css";
 
 export const Counter = ({min, max, value, onIncrease, onDecrease}) => {
     return (
-        <div>
+        <div className={style.counter}>
             <button 
                 disabled={!Number.isInteger(min) || value <= min}
                 onClick={onDecrease}>-</button>
-            <span style={css.value}>{value}</span>
+            <span>{value}</span>
             <button 
                 disabled={!Number.isInteger(max) || value >= max}
                 onClick={onIncrease}>+</button>        
