@@ -1,14 +1,15 @@
 import {React} from "react";
 import style from "./restaurants-tabs.module.css";
+import { Button } from "../../button/button";
 
 export const RestaurantsTabs = ({restaurants, activeRestaurant, onChangeRestaurant}) => {
     const tabs = restaurants.map(({id, name}) =>
-        <button key={id}
+        <Button key={id}
+            title={name}
             className={style.button}
             disabled={id === activeRestaurant}
-            onClick={() => onChangeRestaurant(id)}>
-            {name}
-        </button>
+            onClick={() => onChangeRestaurant(id)}
+        />
     );
     return (
         <div className={style.tabs}>
