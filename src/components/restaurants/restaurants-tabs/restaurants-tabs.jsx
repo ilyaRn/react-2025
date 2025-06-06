@@ -1,26 +1,17 @@
 import {React} from "react";
-
-const css = {
-    root: {
-        margin: "2rem 0",
-        textAlign: "center",
-    },
-    buttonTab: {
-        margin: "0 1rem",
-    }
-};
+import style from "./restaurants-tabs.module.css";
 
 export const RestaurantsTabs = ({restaurants, activeRestaurant, onChangeRestaurant}) => {
     const tabs = restaurants.map(({id, name}) =>
         <button key={id}
-            style={css.buttonTab}
+            className={style.button}
             disabled={id === activeRestaurant}
             onClick={() => onChangeRestaurant(id)}>
             {name}
         </button>
     );
     return (
-        <div style={css.root}>
+        <div className={style.tabs}>
             {tabs}
         </div>
     );

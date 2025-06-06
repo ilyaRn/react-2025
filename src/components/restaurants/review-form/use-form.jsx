@@ -22,7 +22,7 @@
                 ? { ...state, rating: payload } 
                 : state;
         case CLEAR_ACTION:
-            return { ...DEFAULT_FORM_VALUE, clearCounter: state.clearCounter + 1 };
+            return { ...DEFAULT_FORM_VALUE };
         default:
             return state;
     }
