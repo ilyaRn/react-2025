@@ -20,13 +20,13 @@ export const Restaurant = ({restaurant}) => {
 
     return (
         <div className={style.restaurant}>
-            <h3>Меню</h3>
+            <h3>Menu</h3>
             <table>
                 <tbody>
                     {menuTableRows}
                 </tbody>
             </table>
-            <h3>Отзывы</h3>
+            <h3>Reviews</h3>
             <ul>                
                 {reviewsListItems}
             </ul>
