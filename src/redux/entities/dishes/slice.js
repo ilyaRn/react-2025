@@ -15,8 +15,6 @@ export const dishSlice = createSlice({
   selectors: {
     selectDishIds: (state) => state.ids,
     selectDishById: (state, id) => state.entities[id] || {},
-    // TODO: memoize
-    selectDishesByIds: (state, ids) => ids.map((id) => state.entities[id] || {}),       
   },
 });
 

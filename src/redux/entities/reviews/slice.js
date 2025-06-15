@@ -15,8 +15,6 @@ export const reviewSlice = createSlice({
   selectors: {
     selectReviewIds: (state) => state.ids,
     selectReviewById: (state, id) => state.entities[id] || {},
-    // TODO: memoize
-    selectReviewsByIds: (state, ids) => ids.map((id) => state.entities[id] || {}),  
   },
 });
 

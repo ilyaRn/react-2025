@@ -21,12 +21,9 @@ export const Restaurants = () => {
                     />
                 )}
             </div>
-            {Array.from({length:7}, (_, index) => 
-                <Restaurant
-                    key={index}
-                    restaurantId={activeRestaurantId}
-                />
-            )}        
+            <Restaurant
+                restaurantId={activeRestaurantId}
+            />    
         </div>
     );
 };

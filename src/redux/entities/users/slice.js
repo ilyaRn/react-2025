@@ -15,8 +15,6 @@ export const userSlice = createSlice({
   selectors: {
     selectUserIds: (state) => state.ids,
     selectUserById: (state, id) => state.entities[id] || {},
-    // TODO: memoize
-    selectUsersByIds: (state, ids) => ids.map((id) => state.entities[id] || {}),
   },
 });
 

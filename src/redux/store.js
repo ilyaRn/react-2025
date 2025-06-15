@@ -4,7 +4,6 @@ import { dishSlice } from "./entities/dishes/slice";
 import { reviewSlice } from "./entities/reviews/slice";
 import { userSlice } from "./entities/users/slice";
 
-console.log("slice", userSlice);
 
 export const store = configureStore({
   reducer: {

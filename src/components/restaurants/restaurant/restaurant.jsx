@@ -4,32 +4,19 @@ import { DishTableRow } from "./dish-table-row/dish-table-row.jsx";
 import style from "./restaurant.module.css";
 import { useSelector } from "react-redux";
 import { selectRestautantById } from "../../../redux/entities/restaurants/slice.js";
-import { selectDishesByIds } from "../../../redux/entities/dishes/slice.js";
-import { selectReviewsByIds } from "../../../redux/entities/reviews/slice.js";
-import { selectUsersByIds } from "../../../redux/entities/users/slice.js";
+import { ReviewListItem } from "./review-list-item/review-list-item.jsx";
+
 
 export const Restaurant = ({restaurantId}) => {
     const restaurant = useSelector((state) => selectRestautantById(state, restaurantId));
-    const menu = useSelector((state) => selectDishesByIds(state, restaurant.menu));
-    const reviews = useSelector((state) => selectReviewsByIds(state, restaurant.reviews));
 
-    const menuTableRows = menu.map(({ id, name, price }) =>
-        <DishTableRow key={id}
-            name={name}
-            price={price} />
+    const menuTableRows = restaurant.menu.map((id) =>
+        <DishTableRow key={id} menuId={id} />
     );
 
-    const users = useSelector((state) => selectUsersByIds(state, reviews.map((review) => review.userId)));
-    const reviewsListItems = [];
-    for (let i = 0; i < reviews.length; i++) {
-        const review = reviews[i];
-        const user = users.find((user) => user.id == review.userId) || {};
-        reviewsListItems.push(
-            <li key={review.id}>
-                {user.name} ({review.rating}): {review.text}
-            </li>
-        );
-    }
+    const reviewsListItems = restaurant.reviews.map((id) =>
+        <ReviewListItem key={id} reviewId={id} />
+    );
 
     return (
         <div className={style.restaurant}>
@@ -39,12 +26,10 @@ export const Restaurant = ({restaurantId}) => {
                     {menuTableRows}
                 </tbody>
             </table>
-
             <h3>Reviews</h3>
             <ul>                
                 {reviewsListItems}
-            </ul>
-
+            </ul>   
             <ReviewForm />
         </div>
     );
