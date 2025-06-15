@@ -1,26 +1,29 @@
 import { React, useState } from "react";
-import { restaurants } from "../../../materials/datas.js";
-import { RestaurantsTabs } from "./restaurants-tabs/restaurants-tabs.jsx";
+import { RestaurantsTab } from "./restaurants-tab/restaurants-tab.jsx";
 import { Restaurant } from "./restaurant/restaurant.jsx";
-
+import { selectRestautantIds } from "../../redux/entities/restaurants/slice.js";
+import { useSelector } from "react-redux";
+import style from "./restaurants.module.css";
 
 
 export const Restaurants = () => {
-    const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0].id);
-    const restaurant = restaurants.find((r) => r.id == activeRestaurantId);
+    const restaurants = useSelector(selectRestautantIds);
+    const [activeRestaurantId, setActiveRestaurantId] = useState(restaurants[0]);
+
     return (
         <div>
-            <RestaurantsTabs
-                restaurants={restaurants}
-                activeRestaurant={activeRestaurantId}
-                onChangeRestaurant={setActiveRestaurantId}
-            />
-            {Array.from({length:7}, (_, index) => 
-                <Restaurant
-                    key={index}
-                    restaurant={restaurant}
-                />
-            )}        
+            <div className={style.tabs}>
+                {restaurants.map((id) =>
+                    <RestaurantsTab key={id}
+                        restaurantId={id}
+                        activeRestaurant={activeRestaurantId}
+                        onChangeRestaurant={setActiveRestaurantId}
+                    />
+                )}
+            </div>
+            <Restaurant
+                restaurantId={activeRestaurantId}
+            />    
         </div>
     );
 };
