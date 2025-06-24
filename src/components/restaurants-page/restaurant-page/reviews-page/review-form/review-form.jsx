@@ -1,9 +1,9 @@
 import { React, useContext } from "react";
-import { Counter } from "../../counter/counter.jsx";
 import { useForm } from "./use-form.jsx";
-import { Button } from "../../button/button.jsx";
-import { AuthContext } from "../../contexts/auth-context/index.jsx";
+import { AuthContext } from "../../../../contexts/auth-context/index.jsx";
 import style from "./review-form.module.css";
+import { Button } from "../../../../button/button.jsx";
+import { Counter } from "../../../../counter/counter.jsx";
 
 export const ReviewForm = () => {    
     const {form, setName, setText, setRating, clear} = useForm();

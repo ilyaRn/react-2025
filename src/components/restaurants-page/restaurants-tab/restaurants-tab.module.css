@@ -1,0 +1,9 @@
+.restaurantLink {
+    margin: 0 1rem;
+    color: blue;
+}
+
+.restaurantLinkActive {
+    margin: 0 1rem;
+    color: red;
+}
