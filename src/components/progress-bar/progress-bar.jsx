@@ -2,8 +2,10 @@ import { React, useState, useEffect } from "react";
 import styles from "./progress-bar.module.css";
 
 function calculateScrollProgressPercent() {
-    const percent = window.pageYOffset / (document.body.scrollHeight - document.documentElement.clientHeight);
-    return (percent * 100).toFixed(1) + "%";    
+    const percent =
+        window.pageYOffset /
+        (document.body.scrollHeight - document.documentElement.clientHeight);
+    return (percent * 100).toFixed(1) + "%";
 }
 
 export const ProgressBar = () => {
@@ -14,5 +16,5 @@ export const ProgressBar = () => {
         return () => window.removeEventListener("scroll", onScroll);
     }, []);
 
-    return <div className={styles.progressBar} style={{width: width}}></div>;
+    return <div className={styles.progressBar} style={{ width: width }}></div>;
 };

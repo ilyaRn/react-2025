@@ -5,13 +5,12 @@ import { reviewSlice } from "./entities/reviews/slice";
 import { userSlice } from "./entities/users/slice";
 import { cartSlice } from "./entities/cart/slice";
 
-
 export const store = configureStore({
-  reducer: {
-    [restaurantSlice.name]: restaurantSlice.reducer,
-    [dishSlice.name]: dishSlice.reducer,
-    [reviewSlice.name]: reviewSlice.reducer,
-    [userSlice.name]: userSlice.reducer,
-    [cartSlice.name]: cartSlice.reducer,
-  },
+    reducer: {
+        [restaurantSlice.name]: restaurantSlice.reducer,
+        [dishSlice.name]: dishSlice.reducer,
+        [reviewSlice.name]: reviewSlice.reducer,
+        [userSlice.name]: userSlice.reducer,
+        [cartSlice.name]: cartSlice.reducer,
+    },
 });

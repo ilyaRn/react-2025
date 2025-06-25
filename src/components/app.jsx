@@ -13,30 +13,47 @@ import { RestaurantMenuPage } from "./restaurants-page/restaurant-page/menu-page
 import { RestaurantReviewsPage } from "./restaurants-page/restaurant-page/reviews-page/reviews-page.jsx";
 import { DishPage } from "./dish-page/dish-page.jsx";
 
-
 export const App = () => {
     return (
         <Provider store={store}>
             <ThemeContextProvider>
                 <AuthContextProvider>
-                    <Layout>
                     <BrowserRouter>
-                        <Routes> 
-                            <Route path="/" element={<HomePage />} />
-                            <Route path="restaurants" element={<RestaurantsPage />}>
-                                <Route path=":restaurantId" element={<RestaurantPage />}>
-                                    <Route index element={<RestaurantMenuPage />} />
-                                    <Route path="menu" element={<RestaurantMenuPage />} />
-                                    <Route path="reviews" element={<RestaurantReviewsPage />} />
+                        <Routes>
+                            <Route element={<Layout />}>
+                                <Route path="/" element={<HomePage />} />
+                                <Route
+                                    path="restaurants"
+                                    element={<RestaurantsPage />}
+                                >
+                                    <Route
+                                        path=":restaurantId"
+                                        element={<RestaurantPage />}
+                                    >
+                                        <Route
+                                            index
+                                            element={<RestaurantMenuPage />}
+                                        />
+                                        <Route
+                                            path="menu"
+                                            element={<RestaurantMenuPage />}
+                                        />
+                                        <Route
+                                            path="reviews"
+                                            element={<RestaurantReviewsPage />}
+                                        />
+                                    </Route>
                                 </Route>
+                                <Route
+                                    path="/dish/:dishId"
+                                    element={<DishPage />}
+                                />
+                                <Route path="*" element={<div>404</div>} />
                             </Route>
-                            <Route path="/dish/:dishId" element={<DishPage />} />
-                            <Route path="*" element={<div>404</div>} />
                         </Routes>
                     </BrowserRouter>
-                    </Layout>
                 </AuthContextProvider>
             </ThemeContextProvider>
         </Provider>
     );
-}; 
+};

@@ -6,19 +6,21 @@ import { useSelector } from "react-redux";
 import { DishCounter } from "../../../../dish-counter/dish-counter.jsx";
 import { NavLink } from "react-router";
 
+export const DishTableRow = ({ dishId }) => {
+    const { auth } = useContext(AuthContext);
+    const dish = useSelector((state) => selectDishById(state, dishId));
 
-export const DishTableRow = ({menuId}) => {
-    const {auth} = useContext(AuthContext);
-    const dish =  useSelector((state) => selectDishById(state, menuId));
-
-
-    return <tr className={style.dish}>
-        <td><NavLink to={`/dish/${dish.id}`}>{dish.name}</NavLink></td>
-        <td>{dish.price}</td>
-        {auth.username ?
+    return (
+        <tr className={style.dish}>
             <td>
-                <DishCounter min={0} max={10} dishId={dish.id} />
+                <NavLink to={`/dish/${dish.id}`}>{dish.name}</NavLink>
             </td>
-        : null}
-    </tr>;
+            <td>{dish.price}</td>
+            {auth.username ? (
+                <td>
+                    <DishCounter min={0} max={10} dishId={dish.id} />
+                </td>
+            ) : null}
+        </tr>
+    );
 };
