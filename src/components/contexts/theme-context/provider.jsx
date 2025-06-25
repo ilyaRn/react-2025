@@ -4,7 +4,9 @@ import { ThemeContext } from ".";
 export const ThemeContextProvider = (props) => {
     const [theme, setTheme] = useState("default");
 
-    return <ThemeContext value={{ theme, setTheme }}>
-        {props.children}
-    </ThemeContext>;
+    return (
+        <ThemeContext value={{ theme, setTheme }}>
+            {props.children}
+        </ThemeContext>
+    );
 };

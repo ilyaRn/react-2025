@@ -5,9 +5,8 @@ import { App } from "./components/app.jsx";
 import "./reset.css";
 import "./global.css";
 
-
 createRoot(document.getElementById("root")).render(
-	<StrictMode>
-		<App />
-	</StrictMode>,
+    <StrictMode>
+        <App />
+    </StrictMode>
 );

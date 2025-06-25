@@ -7,14 +7,16 @@ export const AuthContextProvider = (props) => {
     });
 
     const login = useCallback(() => {
-        setAuth({username: "Ilya"});
+        setAuth({ username: "Ilya" });
     }, []);
 
     const logout = useCallback(() => {
-        setAuth({username: null});
+        setAuth({ username: null });
     }, []);
 
-    return <AuthContext value={{ auth, login, logout }}>
-        {props.children}
-    </AuthContext>;
+    return (
+        <AuthContext value={{ auth, login, logout }}>
+            {props.children}
+        </AuthContext>
+    );
 };
